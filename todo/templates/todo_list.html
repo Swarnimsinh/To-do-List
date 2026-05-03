@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <title>Main page</title>
+    <link rel="stylesheet" href="{% static 'todo/styles.css' %}">
+</head>
+
+<body>
+    <h1>
+        TO-DO LIST
+    </h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button class="add-button" type="submit">Add Task</button>
+        
+    </form>
+
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {% comment %} <span>{{ task.text }}</span> {% endcomment %}
+                {% comment %} <span class="{% if task.is_completed %}completed{% endif %}">{{ task.text }}</span>
+
+                    <a href="{% url 'delete' task.id %}" class="del-button">Delete</a>
+
+                    {% if task.is_completed %}
+                        <a href="{% url 'complete' task.id %}" class="undo-button">Undo</a>
+                    {% else %}
+                        <a href="{% url 'complete' task.id %}" class="com-button">Done</a>
+                    {% endif %}
+             {% endcomment %}
+             
+            <span class="{% if task.is_completed %}completed{% endif %}">
+                {{ task.text }}
+            </span>
+
+            <div class="buttons">
+                <a href="{% url 'delete' task.id %}" class="del-button">Delete</a>
+
+                {% if task.is_completed %}
+                    <a href="{% url 'complete' task.id %}" class="undo-button">Undo</a>
+                {% else %}
+                    <a href="{% url 'complete' task.id %}" class="com-button">Done</a>
+                {% endif %}
+            </div>
+
+            </li>
+
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
