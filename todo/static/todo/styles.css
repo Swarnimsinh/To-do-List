@@ -1,20 +1,32 @@
 body {
-  background-color: rgb(200, 181, 235);        
+
+    background-image:  url("../images/abstract.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #d69fe0;
+    font-family: 'Patrick Hand', cursive;
 }
+
+/* body {
+  background-color: rgb(200, 181, 235);        
+} */
 h1 {
     color: rgb(55, 30, 102); 
     text-align: center;
     margin-top: 50px;
-    font-size: 40px;
+    font-size: 50px;
     width: 1000px;
-    margin: auto;
+    /* margin-top: 30px; */
+    margin-left: 230px;
 }
 form {
     display: flex;
     justify-content: center;   /* center the whole row */
     align-items: center;       /* align vertically */
     gap: 20px;                 /* space between textbox & button */
-    margin-top: 50px;
+    margin-top: 30px;
 }
 textarea {
     width: 500px;
@@ -29,10 +41,11 @@ textarea {
     background-color: rgb(55, 30, 102);
     text-align: center;
     color: rgb(255, 255, 255);
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     margin-left: 10px;
     padding: 10px 15px;
+    font-family: 'Patrick Hand', cursive;
 }
 
 .del-button {
@@ -83,12 +96,17 @@ ul {
     list-style: none;
     padding: 0;
     width: 800px;
-    margin: auto;
+    margin-top: 45px;
+    margin-left: 350px;
 }
 
 li {
-    background: rgb(220, 209, 245);
+    /* background: rgb(232, 194, 241); */
+    background: rgba(101, 10, 198, 0.13);
+    backdrop-filter: blur(8px);
+    /* opacity: 0.5; */
     padding: 10px;
+    font-size: 21px;
     margin-bottom: 10px;
     border-radius: 8px;
     display: flex;

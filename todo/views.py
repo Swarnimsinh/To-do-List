@@ -3,10 +3,6 @@ from .models import Task
 from .forms import TodoForm
 from django.shortcuts import get_object_or_404, redirect
 
-# Create your views here.
-# def index(request):
-#     return render(request, 'index.html')
-
 def todo_list(request):
     
     if request.method == 'POST':

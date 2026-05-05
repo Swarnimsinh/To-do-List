@@ -3,7 +3,9 @@
 <html lang="en">
 <head>    
     <title>Main page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{% static 'todo/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -13,36 +15,39 @@
     <form method="POST">
         {% csrf_token %}
         {{ form }}
-        <button class="add-button" type="submit">Add Task</button>
+        <button class="add-button" type="submit">ADD TASK</button>
         
     </form>
 
     <ul>
         {% for task in tasks %}
             <li>
-                {% comment %} <span>{{ task.text }}</span> {% endcomment %}
-                {% comment %} <span class="{% if task.is_completed %}completed{% endif %}">{{ task.text }}</span>
-
-                    <a href="{% url 'delete' task.id %}" class="del-button">Delete</a>
-
-                    {% if task.is_completed %}
-                        <a href="{% url 'complete' task.id %}" class="undo-button">Undo</a>
-                    {% else %}
-                        <a href="{% url 'complete' task.id %}" class="com-button">Done</a>
-                    {% endif %}
-             {% endcomment %}
-             
             <span class="{% if task.is_completed %}completed{% endif %}">
                 {{ task.text }}
             </span>
 
             <div class="buttons">
-                <a href="{% url 'delete' task.id %}" class="del-button">Delete</a>
+                {% comment %} <a href="{% url 'delete' task.id %}" class="del-button">
+                    <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                </a> {% endcomment %}
+                <a href="{% url 'delete' task.id %}" title="delete">
+                    <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                </a>
 
                 {% if task.is_completed %}
-                    <a href="{% url 'complete' task.id %}" class="undo-button">Undo</a>
+                    <a href="{% url 'complete' task.id %}" title="complete">
+                        <i class="fa-solid fa-check" style="color: #94c7a1;"></i>
+                    </a>
+                    {% comment %} <a href="{% url 'complete' task.id %}" class="undo-button">
+                        <i class="fa-solid fa-check" style="color: #28a745;"></i>
+                    </a> {% endcomment %}
                 {% else %}
-                    <a href="{% url 'complete' task.id %}" class="com-button">Done</a>
+                    {% comment %} <a href="{% url 'complete' task.id %}" class="com-button">
+                        <i>class="fa-solid fa-check" style="color: #a3cfad;"</i>
+                    </a> {% endcomment %}
+                    <a href="{% url 'complete' task.id %}" title="complete">
+                        <i class="fa-solid fa-check" style="color: #28a745;"></i>
+                    </a>
                 {% endif %}
             </div>
 
